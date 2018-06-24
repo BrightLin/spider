@@ -2,7 +2,7 @@
 from downloader import html_downloader
 from manager import url_manager
 from outputer import data_outputer
-from resolver import html_parser
+from resolver import mp4_parser
 
 url = "http://g.beva.com/kan-erge/c10266.html#1905"
 
@@ -11,7 +11,7 @@ class SpiderMain(object):
     def __init__(self):
         self.urls = url_manager.UrlManager()
         self.htmlDownloader = html_downloader.Downloader()
-        self.htmlParser = html_parser.Parser()
+        self.htmlParser = mp4_parser.Parser()
         self.outer = data_outputer.Outputer()
 
     def craw(self, root_url):
