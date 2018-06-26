@@ -29,9 +29,12 @@ class Mp4Parser(Parser):
         nav_center = soup.findAll('nav', class_='center')
         for res in nav_center:
             mp4_name = res.b.get_text()
+            print("get name: ", mp4_name)
 
+        print(soup)
         mp4_datas = set()
         vcp_player = soup.findAll('div', class_='vcp-player')
+        print("get Mp4 url: ", vcp_player)
         for res in vcp_player:
             mp4_datas.add({'url': res.video['src'], 'name': mp4_name})
 

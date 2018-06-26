@@ -6,12 +6,14 @@ from resolver import mp4_parser
 
 url = "http://g.beva.com/kan-erge/c10266.html#1905"
 
+MAX_count = 1
+
 
 class SpiderMain(object):
     def __init__(self):
         self.urls = url_manager.UrlManager()
         self.htmlDownloader = html_downloader.Downloader()
-        self.htmlParser = mp4_parser.Parser()
+        self.htmlParser = mp4_parser.Mp4Parser()
         self.outer = data_outputer.Outputer()
 
     def craw(self, root_url):
@@ -32,7 +34,7 @@ class SpiderMain(object):
                 # 添加数据
                 self.outer.collect_data(new_data)
 
-                if count == 1:
+                if count == MAX_count:
                     break
 
                 count = count + 1
