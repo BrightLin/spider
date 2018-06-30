@@ -70,13 +70,15 @@ class Mp4Parser(Parser):
     def get_video_url(self, base_url, content):
         try:
             if not content is None and len(content) > 0:
+                data = json.loads(content)
+                item_name = data['data']['itemName']
                 auth_codes = re.findall(r'\"authcode\"\s*:\s*\"[0-9a-zA-Z]*\"', content)
                 if len(auth_codes) == 1:
                     auth_code = auth_codes[0].replace('"', '').split(':')[1]
                     result = self.download_video_html(item_video + auth_code, base_url)
-                    mp4_url = re.findall(r'\"url\":\".*\"', result)[0]
+                    mp4_url = re.findall(r'\"url\":\".*.mp4\"', result)[0]
                     mp4_url = mp4_url.replace('"', '')
-                    return mp4_url[4:].replace('\\','')
+                    return item_name, mp4_url[4:].replace('\\', '')
         except Exception as e:
             print(e)
             return None
