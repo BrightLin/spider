@@ -23,4 +23,4 @@ class UrlManager:
             return
         for url in new_urls:
             self.add_new_url(url)
-            print("add: ", url)
+            # print("add: ", url)
