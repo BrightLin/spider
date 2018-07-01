@@ -6,7 +6,7 @@ from resolver import mp4_parser
 
 start_url = "http://g.beva.com/kan-erge/c10266.html"
 
-MAX_count = 1
+MAX_count = 2
 
 
 class SpiderMain(object):
@@ -44,7 +44,7 @@ class SpiderMain(object):
 
                 # 添加数据
                 self.outer.collect_data(item_name, video_url)
-                print('current: ', count)
+                print('current: %s. Get the video: %s' % (count, item_name))
                 if count >= MAX_count:
                     break
 
