@@ -1,4 +1,6 @@
 # coding:utf-8
+import time
+
 from downloader import html_downloader
 from manager import url_manager
 from outputer import data_outputer
@@ -15,8 +17,12 @@ class SpiderMain(object):
         self.htmlDownloader = html_downloader.Downloader()
         self.htmlParser = mp4_parser.Mp4Parser()
         self.outer = data_outputer.Outputer()
+        self.start_time = 0
 
     def craw(self, root_url):
+        print('Start......')
+        print('------------------------\n')
+        self.start_time = time.time()
         # 添加一个url
         self.urls.add_new_url(root_url)
         count = 1
@@ -54,6 +60,8 @@ class SpiderMain(object):
 
         # 输出数据
         self.outer.output_data()
+        print('\n------------------------')
+        print('All finish. Takes %.2f seconds' % (time.time() - self.start_time))
 
 
 if __name__ == "__main__":

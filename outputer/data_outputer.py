@@ -34,3 +34,5 @@ class Outputer:
             data_out.write(request.content)
             data_out.close()
             print('Download success: %s' % name)
+        else:
+            print('%s exists.' % name)
